@@ -29,7 +29,7 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* Partículas del mouse */
+        /* Estela del Mouse */
         .particle {
             position: absolute; width: 6px; height: 6px;
             background: var(--secondary); border-radius: 50%;
@@ -64,7 +64,7 @@
         .time-value { display: block; font-size: 2rem; font-weight: 900; color: var(--danger); line-height: 1; }
         .time-label { font-size: 0.7rem; text-transform: uppercase; color: #9ca3af; }
 
-        /* CHAT CENTRAL */
+        /* CHAT CENTRAL (EL EJEMPLO) */
         .demo-container { max-width: 800px; margin: 60px auto; padding: 20px; text-align: center; }
         #chat-widget-central {
             width: 100%; max-width: 600px; margin: 0 auto;
@@ -74,44 +74,34 @@
         }
         .chat-banner {
             background: linear-gradient(90deg, var(--secondary), var(--primary));
-            color: white; padding: 10px 20px; font-size: 0.7rem; font-weight: 900;
-            text-transform: uppercase; display: flex; justify-content: space-between; align-items: center;
+            color: white; padding: 12px 20px; font-size: 0.7rem; font-weight: 900;
+            text-transform: uppercase; letter-spacing: 2px; display: flex; justify-content: space-between; align-items: center;
         }
         #chat-body-central { height: 350px; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(0,0,0,0.3); }
         .msg { padding: 12px 18px; border-radius: 15px; max-width: 85%; font-size: 0.95rem; text-align: left; }
         .msg-user { background: var(--primary); align-self: flex-end; color: white; }
         .msg-ai { background: var(--glass); border: 1px solid var(--border); align-self: flex-start; border-left: 4px solid var(--secondary); }
+        
         #chat-input-area-central { padding: 15px; display: flex; gap: 10px; background: #030712; }
         #chat-input-central { flex: 1; background: var(--glass); border: 1px solid var(--border); color: white; padding: 12px; border-radius: 10px; outline: none; }
         .btn-send { background: var(--primary); border: none; color: white; padding: 0 20px; border-radius: 10px; cursor: pointer; font-weight: bold; }
-        .btn-clear { background: rgba(0,0,0,0.3); border: none; color: white; border-radius: 5px; cursor: pointer; padding: 5px 10px; }
+        .btn-clear { background: rgba(0,0,0,0.3); border: none; color: white; border-radius: 5px; cursor: pointer; padding: 5px 10px; font-size: 0.7rem; }
 
-        /* STATS Y AUTORIDAD */
+        /* AUTORIDAD Y STATS */
         .authority { padding: 60px 0; background: var(--glass); border-top: 1px solid var(--border); text-align: center; }
         .stats { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
         .stat-item h2 { font-size: 3.5rem; color: var(--primary); margin: 0; font-weight: 900; }
         .stat-item p { color: #9ca3af; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; }
 
-        /* GRID DE BENEFICIOS */
+        /* GRID BENEFICIOS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 80px 0; }
-        .card { 
-            background: var(--glass); border: 1px solid var(--border); 
-            padding: 40px; border-radius: 24px; position: relative; overflow: hidden;
-        }
-        .card:hover { border-color: var(--secondary); transform: translateY(-10px); background: rgba(255,255,255,0.05); }
-        .card h3 { color: var(--secondary); font-size: 1.5rem; margin-top: 0; }
-        .card p { color: #9ca3af; line-height: 1.6; }
+        .card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 24px; }
+        .card h3 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 15px; }
+        .card p { color: #9ca3af; line-height: 1.6; margin: 0; }
 
-        /* BOTONES Y FOOTER */
-        .btn-primary { 
-            background: #fff; color: #000; padding: 20px 45px; border-radius: 15px; 
-            font-weight: 900; text-decoration: none; font-size: 1.2rem; display: inline-block;
-            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
-        }
-        .btn-primary:hover { transform: scale(1.05); background: var(--primary); color: white; }
-        
+        /* FOOTER */
         footer { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; background: #000; }
-        .sub-hero { font-size: 1.2rem; color: #9ca3af; margin: 30px 0; }
+        .btn-primary { background: #fff; color: #000; padding: 18px 40px; border-radius: 12px; font-weight: 900; text-decoration: none; display: inline-block; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -122,40 +112,30 @@
             <h1>Creá tu propio <span>Asistente Pedagógico.</span></h1>
             
             <div class="countdown-container" id="countdown">
-                <div class="time-block">
-                    <span class="time-value" id="days">00</span>
-                    <span class="time-label">Días</span>
-                </div>
-                <div class="time-block">
-                    <span class="time-value" id="hours">00</span>
-                    <span class="time-label">Horas</span>
-                </div>
-                <div class="time-block">
-                    <span class="time-value" id="minutes">00</span>
-                    <span class="time-label">Min</span>
-                </div>
+                <div class="time-block"><span class="time-value" id="days">00</span><span class="time-label">Días</span></div>
+                <div class="time-block"><span class="time-value" id="hours">00</span><span class="time-label">Horas</span></div>
+                <div class="time-block"><span class="time-value" id="minutes">00</span><span class="time-label">Min</span></div>
                 <div class="time-block" style="border-color: var(--secondary); background: rgba(217, 70, 239, 0.1);">
-                    <span class="time-value" id="seconds" style="color: var(--secondary);">00</span>
-                    <span class="time-label">Seg</span>
+                    <span class="time-value" id="seconds" style="color: var(--secondary);">00</span><span class="time-label">Seg</span>
                 </div>
             </div>
 
-            <p class="sub-hero">Unite a la élite docente que automatiza su labor con <b>IA Real</b>.</p>
+            <p style="font-size: 1.2rem; color: #9ca3af;">Revolucioná tu aula con Agentes de Inteligencia Artificial.</p>
             <a href="https://forms.gle/TvAPQjDMaDeAwmRj7" class="btn-primary">INSCRIBIRME AHORA</a>
         </div>
     </header>
 
     <div class="demo-container">
-        <p style="color: var(--accent); font-weight: bold; letter-spacing: 2px;">ESTO ES LO QUE APRENDERÁS A HACER:</p>
-        <h2 style="font-size: 2.5rem; margin-top: 10px;">Interactuá con nuestro Agente</h2>
+        <p style="color: var(--accent); font-weight: bold; letter-spacing: 2px;">PROBÁ EL RESULTADO FINAL</p>
+        <h2 style="font-size: 2.5rem; margin-top: 10px;">Tu primer Agente en vivo:</h2>
         <br>
         <div id="chat-widget-central">
             <div class="chat-banner">
-                <span>CONECTADO A MISTRAL + MAKE</span>
+                <span>SISTEMA MISTRAL AI + MAKE</span>
                 <button class="btn-clear" onclick="clearChat()">🗑️ Limpiar</button>
             </div>
             <div id="chat-body-central">
-                <div class="msg msg-ai">¡Hola! Soy el asistente de INNOA. Preguntame lo que quieras sobre la Masterclass.</div>
+                <div class="msg msg-ai">¡Hola! Soy un ejemplo de la tecnología que vas a dominar. ¿En qué puedo ayudarte?</div>
             </div>
             <div id="chat-input-area-central">
                 <input type="text" id="chat-input-central" placeholder="Escribí aquí..." onkeypress="if(event.key==='Enter') sendCentralMessage()">
@@ -167,9 +147,9 @@
     <div class="authority">
         <div class="container">
             <div class="stats">
-                <div class="stat-item"><h2>+900</h2><p>Docentes Capacitados</p></div>
-                <div class="stat-item"><h2>5</h2><p>Posgrados en UNSA</p></div>
-                <div class="stat-item"><h2>12</h2><p>Diplomaturas Activas</p></div>
+                <div class="stat-item"><h2>+900</h2><p>Docentes</p></div>
+                <div class="stat-item"><h2>5</h2><p>Posgrados UNSA</p></div>
+                <div class="stat-item"><h2>12</h2><p>Diplomaturas</p></div>
             </div>
         </div>
     </div>
@@ -178,15 +158,15 @@
         <div class="grid">
             <div class="card">
                 <h3>⚡ Ahorro de Tiempo</h3>
-                <p>Aprendé a generar secuencias didácticas completas y rúbricas de evaluación en menos de 5 minutos.</p>
+                <p>Planificá secuencias didácticas y rúbricas en minutos, no en horas.</p>
             </div>
             <div class="card">
                 <h3>🇦🇷 ADN Regional</h3>
-                <p>Nuestra IA está entrenada específicamente con los NAP y marcos pedagógicos de Argentina.</p>
+                <p>Entrenado con marcos pedagógicos y NAP de Argentina.</p>
             </div>
             <div class="card">
-                <h3>🛡️ Respaldo Académico</h3>
-                <p>No somos solo técnicos; somos un equipo universitario con trayectoria en la educación pública y privada.</p>
+                <h3>🛡️ Respaldo INNOA</h3>
+                <p>Garantía de calidad académica por expertos universitarios.</p>
             </div>
         </div>
     </div>
@@ -194,12 +174,12 @@
     <footer>
         <div class="container">
             <h2>INNOA | PRAXIS</h2>
-            <p>&copy; 2026 INNOA Consultora Educativa. San Salvador de Jujuy.</p>
+            <p>&copy; 2026 INNOA Consultora Educativa.</p>
         </div>
     </footer>
 
     <script>
-        // CONFIGURACIÓN DE MAKE (MÉTODO GET PARA EVITAR ERRORES)
+        // URL DEL WEBHOOK (fy9c)
         const webhookURL = "https://hook.us2.make.com/5rykmhi5bgpe07xdhdvb8yrtxswufy9c";
 
         async function sendCentralMessage() {
@@ -217,24 +197,24 @@
             body.scrollTop = body.scrollHeight;
 
             try {
-                // Usamos GET para evitar el bloqueo de CORS que te estaba dando problemas
-                const url = `${webhookURL}?message=${encodeURIComponent(msg)}`;
+                // MÉTODO GET PARA EVITAR ERRORES DE RED/CORS
+                const url = `${webhookURL}?message=${encodeURIComponent(msg)}&_t=${Date.now()}`;
                 const response = await fetch(url, { method: 'GET' });
 
                 if (response.ok) {
                     const data = await response.json();
-                    document.getElementById(typingId).innerText = data.respuesta || "¡Conexión exitosa! Esa es la respuesta de la IA.";
+                    document.getElementById(typingId).innerText = data.respuesta || "IA: Recibí el mensaje, verificá el JSON en Make.";
                 } else {
-                    document.getElementById(typingId).innerText = "Error: El servidor de Make no respondió.";
+                    document.getElementById(typingId).innerText = "Error: Respuesta fallida del servidor (Status " + response.status + ").";
                 }
             } catch (err) {
-                document.getElementById(typingId).innerText = "Error de red. Verificá que Make esté en ON.";
+                document.getElementById(typingId).innerText = "Error de red. Asegurate que Make esté en ON.";
             }
             body.scrollTop = body.scrollHeight;
         }
 
         function clearChat() {
-            document.getElementById('chat-body-central').innerHTML = `<div class="msg msg-ai">Chat reiniciado. ¿En qué más puedo ayudarte?</div>`;
+            document.getElementById('chat-body-central').innerHTML = `<div class="msg msg-ai">Chat reiniciado.</div>`;
         }
 
         // RELOJ
@@ -242,19 +222,18 @@
         setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
-            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
 
-        // ESTELA MOUSE
+        // ESTELA
         document.addEventListener('mousemove', function(e) {
             const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.left = e.pageX + 'px'; p.style.top = e.pageY + 'px';
+            p.className = 'particle'; p.style.left = e.pageX + 'px'; p.style.top = e.pageY + 'px';
             document.body.appendChild(p);
-            setTimeout(() => { p.remove(); }, 500);
+            setTimeout(() => p.remove(), 500);
         });
     </script>
 </body>
