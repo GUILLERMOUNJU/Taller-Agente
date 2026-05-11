@@ -98,9 +98,6 @@
         .authority { padding: 60px 0; background: var(--glass); border-top: 1px solid var(--border); text-align: center; }
         .stats { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
         .stat-item h2 { font-size: 3rem; color: var(--primary); margin: 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px 0; }
-        .card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 24px; }
-        .btn-primary { background: #fff; color: #000; padding: 20px 45px; border-radius: 15px; font-weight: 900; text-decoration: none; font-size: 1.4rem; display: inline-block; }
         footer { padding: 60px 0; border-top: 1px solid var(--border); text-align: center; background: #000; }
     </style>
 </head>
@@ -131,7 +128,7 @@
             </div>
 
             <p class="sub-hero">Automatizá tu planificación con <b>Pensamiento Crítico</b>.</p>
-            <a href="https://forms.gle/TvAPQjDMaDeAwmRj7" class="btn-primary">INSCRIBIRME AHORA</a>
+            <a href="https://forms.gle/TvAPQjDMaDeAwmRj7" class="btn-primary" style="text-decoration:none; color:black; background:white; padding:15px 30px; border-radius:10px; font-weight:900;">INSCRIBIRME AHORA</a>
         </div>
     </header>
 
@@ -141,11 +138,11 @@
         <br>
         <div id="chat-widget-central">
             <div class="chat-banner">
-                <span>CONECTADO A MISTRAL AI + MAKE.COM</span>
-                <button class="btn-clear" onclick="clearChat()" title="Borrar conversación">🗑️ Borrar</button>
+                <span>MISTRAL AI + MAKE.COM ACTIVADO</span>
+                <button class="btn-clear" onclick="clearChat()">🗑️ Borrar</button>
             </div>
             <div id="chat-body-central">
-                <div class="msg msg-ai">¡Hola! Soy un Agente creado por INNOA. ¿En qué puedo ayudarte hoy?</div>
+                <div class="msg msg-ai">¡Hola! Soy el asistente de INNOA. ¿Listo para ver cómo la IA transforma tu aula? Preguntame algo.</div>
             </div>
             <div id="chat-input-area-central">
                 <input type="text" id="chat-input-central" placeholder="Escribí tu pregunta aquí..." onkeypress="if(event.key==='Enter') sendCentralMessage()">
@@ -172,8 +169,8 @@
     </footer>
 
     <script>
-        // --- CONEXIÓN MAKE ACTUALIZADA ---
-        const webhookURL = "https://hook.us2.make.com/08p6ty167wcyawzocf4t7h7lyswr5dbj";
+        // --- NUEVA URL DE WEBHOOK ---
+        const webhookURL = "https://hook.us2.make.com/s81pzmprbmhim9o9jhlbv2lypwrflg2e";
 
         async function sendCentralMessage() {
             const input = document.getElementById('chat-input-central');
@@ -186,7 +183,7 @@
             body.scrollTop = body.scrollHeight;
 
             const typingId = "t-" + Date.now();
-            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Pensando...</div>`;
+            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Escribiendo...</div>`;
             body.scrollTop = body.scrollHeight;
 
             try {
@@ -195,20 +192,25 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: msg })
                 });
-                const data = await response.json();
-                // IMPORTANTE: Busca el campo "respuesta" que configuramos en Make
-                document.getElementById(typingId).innerText = data.respuesta || "No recibí una respuesta clara de la IA.";
+
+                if (response.ok) {
+                    const data = await response.json();
+                    // Buscamos el campo "respuesta" del JSON de Make
+                    document.getElementById(typingId).innerText = data.respuesta || "IA conectada. Esperando respuesta de Mistral...";
+                } else {
+                    document.getElementById(typingId).innerText = "Error: El escenario de Make no respondió correctamente.";
+                }
             } catch (err) {
-                document.getElementById(typingId).innerText = "Error al conectar. Verifica si el escenario en Make está ON.";
+                document.getElementById(typingId).innerText = "Error de conexión. Asegúrate que el Webhook esté en ON.";
             }
             body.scrollTop = body.scrollHeight;
         }
 
         function clearChat() {
-            document.getElementById('chat-body-central').innerHTML = `<div class="msg msg-ai">Chat reiniciado. ¿En qué más puedo ayudarte?</div>`;
+            document.getElementById('chat-body-central').innerHTML = `<div class="msg msg-ai">Chat reiniciado. ¿En qué puedo ayudarte?</div>`;
         }
 
-        // --- CONTADOR ---
+        // --- RELOJ ---
         const targetDate = new Date("May 15, 2026 20:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
