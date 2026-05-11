@@ -94,7 +94,6 @@
         #chat-input-central { flex: 1; background: var(--glass); border: 1px solid var(--border); color: white; padding: 12px; border-radius: 10px; outline: none; }
         .btn-send { background: var(--primary); border: none; color: white; padding: 0 20px; border-radius: 10px; cursor: pointer; font-weight: bold; }
 
-        /* Estilos generales */
         .authority { padding: 60px 0; background: var(--glass); border-top: 1px solid var(--border); text-align: center; }
         .stats { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
         .stat-item h2 { font-size: 3rem; color: var(--primary); margin: 0; }
@@ -109,26 +108,14 @@
             <h1>Creá tu propio <span>Asistente Pedagógico.</span></h1>
             
             <div class="countdown-container" id="countdown">
-                <div class="time-block">
-                    <span class="time-value" id="days">00</span>
-                    <span class="time-label">Días</span>
-                </div>
-                <div class="time-block">
-                    <span class="time-value" id="hours">00</span>
-                    <span class="time-label">Horas</span>
-                </div>
-                <div class="time-block">
-                    <span class="time-value" id="minutes">00</span>
-                    <span class="time-label">Min</span>
-                </div>
-                <div class="time-block" style="border-color: var(--secondary); background: rgba(217, 70, 239, 0.1);">
-                    <span class="time-value" id="seconds" style="color: var(--secondary);">00</span>
-                    <span class="time-label">Seg</span>
-                </div>
+                <div class="time-block"><span class="time-value" id="days">00</span><span class="time-label">Días</span></div>
+                <div class="time-block"><span class="time-value" id="hours">00</span><span class="time-label">Horas</span></div>
+                <div class="time-block"><span class="time-value" id="minutes">00</span><span class="time-label">Min</span></div>
+                <div class="time-block" style="border-color: var(--secondary); background: rgba(217, 70, 239, 0.1);"><span class="time-value" id="seconds" style="color: var(--secondary);">00</span><span class="time-label">Seg</span></div>
             </div>
 
             <p class="sub-hero">Automatizá tu planificación con <b>Pensamiento Crítico</b>.</p>
-            <a href="https://forms.gle/TvAPQjDMaDeAwmRj7" class="btn-primary" style="text-decoration:none; color:black; background:white; padding:15px 30px; border-radius:10px; font-weight:900;">INSCRIBIRME AHORA</a>
+            <a href="#" class="btn-primary" style="text-decoration:none; color:black; background:white; padding:15px 30px; border-radius:10px; font-weight:900;">INSCRIBIRME AHORA</a>
         </div>
     </header>
 
@@ -138,14 +125,14 @@
         <br>
         <div id="chat-widget-central">
             <div class="chat-banner">
-                <span>MISTRAL AI + MAKE.COM ACTIVADO</span>
+                <span>CONECTADO A MISTRAL + MAKE</span>
                 <button class="btn-clear" onclick="clearChat()">🗑️ Borrar</button>
             </div>
             <div id="chat-body-central">
-                <div class="msg msg-ai">¡Hola! Soy el asistente de INNOA. ¿Listo para ver cómo la IA transforma tu aula? Preguntame algo.</div>
+                <div class="msg msg-ai">¡Hola! Soy el asistente de INNOA. ¿Listo para ver la IA en acción? Escribime algo.</div>
             </div>
             <div id="chat-input-area-central">
-                <input type="text" id="chat-input-central" placeholder="Escribí tu pregunta aquí..." onkeypress="if(event.key==='Enter') sendCentralMessage()">
+                <input type="text" id="chat-input-central" placeholder="Escribí aquí..." onkeypress="if(event.key==='Enter') sendCentralMessage()">
                 <button class="btn-send" onclick="sendCentralMessage()">ENVIAR</button>
             </div>
         </div>
@@ -162,15 +149,12 @@
     </div>
 
     <footer>
-        <div class="container">
-            <h2>INNOA | PRAXIS</h2>
-            <p>&copy; 2026 INNOA Consultora Educativa.</p>
-        </div>
+        <div class="container"><h2>INNOA | PRAXIS</h2><p>&copy; 2026 INNOA Consultora Educativa.</p></div>
     </footer>
 
     <script>
-        // --- NUEVA URL DE WEBHOOK ---
-        const webhookURL = "https://hook.us2.make.com/s81pzmprbmhim9o9jhlbv2lypwrflg2e";
+        // --- NUEVA URL ACTUALIZADA ---
+        const webhookURL = "https://hook.us2.make.com/5rykmhi5bgpe07xdhdvb8yrtxswufy9c";
 
         async function sendCentralMessage() {
             const input = document.getElementById('chat-input-central');
@@ -183,7 +167,7 @@
             body.scrollTop = body.scrollHeight;
 
             const typingId = "t-" + Date.now();
-            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Escribiendo...</div>`;
+            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Procesando...</div>`;
             body.scrollTop = body.scrollHeight;
 
             try {
@@ -195,22 +179,20 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    // Buscamos el campo "respuesta" del JSON de Make
-                    document.getElementById(typingId).innerText = data.respuesta || "IA conectada. Esperando respuesta de Mistral...";
+                    document.getElementById(typingId).innerText = data.respuesta || "IA conectada correctamente.";
                 } else {
-                    document.getElementById(typingId).innerText = "Error: El escenario de Make no respondió correctamente.";
+                    document.getElementById(typingId).innerText = "Error: El Webhook de Make devolvió un error.";
                 }
             } catch (err) {
-                document.getElementById(typingId).innerText = "Error de conexión. Asegúrate que el Webhook esté en ON.";
+                document.getElementById(typingId).innerText = "No se pudo conectar con Make. Verificá que el escenario esté en ON.";
             }
             body.scrollTop = body.scrollHeight;
         }
 
         function clearChat() {
-            document.getElementById('chat-body-central').innerHTML = `<div class="msg msg-ai">Chat reiniciado. ¿En qué puedo ayudarte?</div>`;
+            document.getElementById('chat-body-central').innerHTML = `<div class="msg msg-ai">Chat reiniciado.</div>`;
         }
 
-        // --- RELOJ ---
         const targetDate = new Date("May 15, 2026 20:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
@@ -221,7 +203,6 @@
             document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
 
-        // --- ESTELA MOUSE ---
         document.addEventListener('mousemove', function(e) {
             const p = document.createElement('div');
             p.className = 'particle';
