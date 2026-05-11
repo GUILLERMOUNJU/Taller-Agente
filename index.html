@@ -17,66 +17,24 @@
         }
 
         * { box-sizing: border-box; transition: all 0.3s ease; }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg);
-            color: #f3f4f6;
-            margin: 0;
-            overflow-x: hidden;
-            cursor: crosshair;
-        }
-
+        body { font-family: 'Outfit', sans-serif; background-color: var(--bg); color: #f3f4f6; margin: 0; overflow-x: hidden; cursor: crosshair; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* Estela del Mouse */
-        .particle {
-            position: absolute; width: 6px; height: 6px;
-            background: var(--secondary); border-radius: 50%;
-            pointer-events: none; z-index: 9999;
-            box-shadow: 0 0 15px var(--secondary);
-        }
+        .particle { position: absolute; width: 6px; height: 6px; background: var(--secondary); border-radius: 50%; pointer-events: none; z-index: 9999; box-shadow: 0 0 15px var(--secondary); }
 
-        /* HEADER */
-        header {
-            padding: 80px 0 60px;
-            text-align: center;
-            background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, var(--bg) 80%);
-        }
-
-        .badge-info {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            padding: 8px 20px; border-radius: 50px;
-            font-weight: 700; font-size: 0.9rem;
-            text-transform: uppercase; letter-spacing: 2px;
-            display: inline-block; margin-bottom: 20px;
-        }
-
+        header { padding: 80px 0 60px; text-align: center; background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, var(--bg) 80%); }
+        .badge-info { background: linear-gradient(90deg, var(--primary), var(--secondary)); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 20px; }
         h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; margin: 0; line-height: 0.9; }
         h1 span { background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* RELOJ */
         .countdown-container { margin: 40px auto; display: flex; justify-content: center; gap: 15px; }
-        .time-block {
-            background: rgba(255, 0, 85, 0.1); border: 1px solid var(--danger);
-            padding: 15px; border-radius: 12px; min-width: 80px; box-shadow: 0 0 15px rgba(255, 0, 85, 0.2);
-        }
+        .time-block { background: rgba(255, 0, 85, 0.1); border: 1px solid var(--danger); padding: 15px; border-radius: 12px; min-width: 80px; box-shadow: 0 0 15px rgba(255, 0, 85, 0.2); }
         .time-value { display: block; font-size: 2rem; font-weight: 900; color: var(--danger); line-height: 1; }
         .time-label { font-size: 0.7rem; text-transform: uppercase; color: #9ca3af; }
 
-        /* CHAT CENTRAL (EL EJEMPLO) */
         .demo-container { max-width: 800px; margin: 60px auto; padding: 20px; text-align: center; }
-        #chat-widget-central {
-            width: 100%; max-width: 600px; margin: 0 auto;
-            background: #0f172a; border: 2px solid var(--primary);
-            border-radius: 24px; display: flex; flex-direction: column;
-            box-shadow: 0 0 50px rgba(59, 130, 246, 0.2); overflow: hidden;
-        }
-        .chat-banner {
-            background: linear-gradient(90deg, var(--secondary), var(--primary));
-            color: white; padding: 12px 20px; font-size: 0.7rem; font-weight: 900;
-            text-transform: uppercase; letter-spacing: 2px; display: flex; justify-content: space-between; align-items: center;
-        }
+        #chat-widget-central { width: 100%; max-width: 600px; margin: 0 auto; background: #0f172a; border: 2px solid var(--primary); border-radius: 24px; display: flex; flex-direction: column; box-shadow: 0 0 50px rgba(59, 130, 246, 0.2); overflow: hidden; }
+        .chat-banner { background: linear-gradient(90deg, var(--secondary), var(--primary)); color: white; padding: 12px 20px; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
         #chat-body-central { height: 350px; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(0,0,0,0.3); }
         .msg { padding: 12px 18px; border-radius: 15px; max-width: 85%; font-size: 0.95rem; text-align: left; }
         .msg-user { background: var(--primary); align-self: flex-end; color: white; }
@@ -87,19 +45,11 @@
         .btn-send { background: var(--primary); border: none; color: white; padding: 0 20px; border-radius: 10px; cursor: pointer; font-weight: bold; }
         .btn-clear { background: rgba(0,0,0,0.3); border: none; color: white; border-radius: 5px; cursor: pointer; padding: 5px 10px; font-size: 0.7rem; }
 
-        /* AUTORIDAD Y STATS */
         .authority { padding: 60px 0; background: var(--glass); border-top: 1px solid var(--border); text-align: center; }
         .stats { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
         .stat-item h2 { font-size: 3.5rem; color: var(--primary); margin: 0; font-weight: 900; }
-        .stat-item p { color: #9ca3af; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; }
-
-        /* GRID BENEFICIOS */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 80px 0; }
         .card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 24px; }
-        .card h3 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 15px; }
-        .card p { color: #9ca3af; line-height: 1.6; margin: 0; }
-
-        /* FOOTER */
         footer { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; background: #000; }
         .btn-primary { background: #fff; color: #000; padding: 18px 40px; border-radius: 12px; font-weight: 900; text-decoration: none; display: inline-block; margin-top: 20px; }
     </style>
@@ -110,32 +60,25 @@
         <div class="container">
             <div class="badge-info">Viernes 15 de Mayo | 20:00 HS</div>
             <h1>Creá tu propio <span>Asistente Pedagógico.</span></h1>
-            
             <div class="countdown-container" id="countdown">
                 <div class="time-block"><span class="time-value" id="days">00</span><span class="time-label">Días</span></div>
                 <div class="time-block"><span class="time-value" id="hours">00</span><span class="time-label">Horas</span></div>
                 <div class="time-block"><span class="time-value" id="minutes">00</span><span class="time-label">Min</span></div>
-                <div class="time-block" style="border-color: var(--secondary); background: rgba(217, 70, 239, 0.1);">
-                    <span class="time-value" id="seconds" style="color: var(--secondary);">00</span><span class="time-label">Seg</span>
-                </div>
+                <div class="time-block" style="border-color: var(--secondary); background: rgba(217, 70, 239, 0.1);"><span class="time-value" id="seconds" style="color: var(--secondary);">00</span><span class="time-label">Seg</span></div>
             </div>
-
-            <p style="font-size: 1.2rem; color: #9ca3af;">Revolucioná tu aula con Agentes de Inteligencia Artificial.</p>
+            <p style="font-size: 1.2rem; color: #9ca3af;">Probá la IA en tiempo real conectada a Make.com</p>
             <a href="https://forms.gle/TvAPQjDMaDeAwmRj7" class="btn-primary">INSCRIBIRME AHORA</a>
         </div>
     </header>
 
     <div class="demo-container">
-        <p style="color: var(--accent); font-weight: bold; letter-spacing: 2px;">PROBÁ EL RESULTADO FINAL</p>
-        <h2 style="font-size: 2.5rem; margin-top: 10px;">Tu primer Agente en vivo:</h2>
-        <br>
         <div id="chat-widget-central">
             <div class="chat-banner">
-                <span>SISTEMA MISTRAL AI + MAKE</span>
+                <span>MISTRAL AI DIAGNÓSTICO</span>
                 <button class="btn-clear" onclick="clearChat()">🗑️ Limpiar</button>
             </div>
             <div id="chat-body-central">
-                <div class="msg msg-ai">¡Hola! Soy un ejemplo de la tecnología que vas a dominar. ¿En qué puedo ayudarte?</div>
+                <div class="msg msg-ai">¡Hola! Escribí algo para probar la conexión.</div>
             </div>
             <div id="chat-input-area-central">
                 <input type="text" id="chat-input-central" placeholder="Escribí aquí..." onkeypress="if(event.key==='Enter') sendCentralMessage()">
@@ -148,7 +91,7 @@
         <div class="container">
             <div class="stats">
                 <div class="stat-item"><h2>+900</h2><p>Docentes</p></div>
-                <div class="stat-item"><h2>5</h2><p>Posgrados UNSA</p></div>
+                <div class="stat-item"><h2>5</h2><p>Posgrados</p></div>
                 <div class="stat-item"><h2>12</h2><p>Diplomaturas</p></div>
             </div>
         </div>
@@ -156,30 +99,16 @@
 
     <div class="container">
         <div class="grid">
-            <div class="card">
-                <h3>⚡ Ahorro de Tiempo</h3>
-                <p>Planificá secuencias didácticas y rúbricas en minutos, no en horas.</p>
-            </div>
-            <div class="card">
-                <h3>🇦🇷 ADN Regional</h3>
-                <p>Entrenado con marcos pedagógicos y NAP de Argentina.</p>
-            </div>
-            <div class="card">
-                <h3>🛡️ Respaldo INNOA</h3>
-                <p>Garantía de calidad académica por expertos universitarios.</p>
-            </div>
+            <div class="card"><h3>⚡ Velocidad</h3><p>Planificaciones en minutos.</p></div>
+            <div class="card"><h3>🇦🇷 Contexto</h3><p>Adaptado a la educación argentina.</p></div>
+            <div class="card"><h3>🛡️ Calidad</h3><p>Garantía académica INNOA.</p></div>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <h2>INNOA | PRAXIS</h2>
-            <p>&copy; 2026 INNOA Consultora Educativa.</p>
-        </div>
-    </footer>
+    <footer><h2>INNOA | PRAXIS</h2></footer>
 
     <script>
-        // URL DEL WEBHOOK (fy9c)
+        // URL ACTUAL (fy9c)
         const webhookURL = "https://hook.us2.make.com/5rykmhi5bgpe07xdhdvb8yrtxswufy9c";
 
         async function sendCentralMessage() {
@@ -193,22 +122,29 @@
             body.scrollTop = body.scrollHeight;
 
             const typingId = "t-" + Date.now();
-            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Procesando...</div>`;
+            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Consultando a Mistral...</div>`;
             body.scrollTop = body.scrollHeight;
 
             try {
-                // MÉTODO GET PARA EVITAR ERRORES DE RED/CORS
-                const url = `${webhookURL}?message=${encodeURIComponent(msg)}&_t=${Date.now()}`;
-                const response = await fetch(url, { method: 'GET' });
+                // MÉTODO GET CON CACHE CONTROL Y DIAGNÓSTICO
+                const url = `${webhookURL}?message=${encodeURIComponent(msg)}&_nocache=${Date.now()}`;
+                
+                const response = await fetch(url, { 
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-store'
+                });
 
                 if (response.ok) {
                     const data = await response.json();
-                    document.getElementById(typingId).innerText = data.respuesta || "IA: Recibí el mensaje, verificá el JSON en Make.";
+                    document.getElementById(typingId).innerText = data.respuesta || "Respuesta vacía de Make (verificar Webhook Response).";
                 } else {
-                    document.getElementById(typingId).innerText = "Error: Respuesta fallida del servidor (Status " + response.status + ").";
+                    document.getElementById(typingId).innerText = "Error HTTP: " + response.status;
                 }
             } catch (err) {
-                document.getElementById(typingId).innerText = "Error de red. Asegurate que Make esté en ON.";
+                // VER ERROR REAL EN PANTALLA
+                document.getElementById(typingId).innerText = "Error de red: " + (err?.message || err);
+                console.error("Error completo:", err);
             }
             body.scrollTop = body.scrollHeight;
         }
@@ -217,7 +153,7 @@
             document.getElementById('chat-body-central').innerHTML = `<div class="msg msg-ai">Chat reiniciado.</div>`;
         }
 
-        // RELOJ
+        // Reloj
         const targetDate = new Date("May 15, 2026 20:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
@@ -228,7 +164,7 @@
             document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
 
-        // ESTELA
+        // Partículas
         document.addEventListener('mousemove', function(e) {
             const p = document.createElement('div');
             p.className = 'particle'; p.style.left = e.pageX + 'px'; p.style.top = e.pageY + 'px';
