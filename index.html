@@ -20,7 +20,7 @@
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg); color: #f3f4f6; margin: 0; overflow-x: hidden; cursor: crosshair; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* Partículas del mouse */
+        /* Estela del Mouse */
         .particle { position: absolute; width: 6px; height: 6px; background: var(--secondary); border-radius: 50%; pointer-events: none; z-index: 9999; box-shadow: 0 0 15px var(--secondary); }
 
         /* HEADER */
@@ -67,14 +67,14 @@
         <div class="container">
             <div class="badge-info">Viernes 15 de Mayo | 20:00 HS</div>
             <h1>Creá tu propio <span>Asistente Pedagógico.</span></h1>
-            
             <div class="countdown-container">
                 <div class="time-block"><span class="time-value" id="days">00</span><span class="time-label">Días</span></div>
                 <div class="time-block"><span class="time-value" id="hours">00</span><span class="time-label">Horas</span></div>
                 <div class="time-block"><span class="time-value" id="minutes">00</span><span class="time-label">Min</span></div>
-                <div class="time-block" style="border-color: var(--secondary); background: rgba(217, 70, 239, 0.1);"><span class="time-value" id="seconds" style="color: var(--secondary);">00</span><span class="time-label">Seg</span></div>
+                <div class="time-block" style="border-color: var(--secondary); background: rgba(217, 70, 239, 0.1);">
+                    <span class="time-value" id="seconds" style="color: var(--secondary);">00</span><span class="time-label">Seg</span>
+                </div>
             </div>
-
             <p style="font-size: 1.2rem; color: #9ca3af;">Revolucioná tu aula con Agentes de Inteligencia Artificial.</p>
             <a href="https://forms.gle/TvAPQjDMaDeAwmRj7" class="btn-primary">INSCRIBIRME AHORA</a>
         </div>
@@ -83,11 +83,11 @@
     <div class="demo-container">
         <div id="chat-widget-central">
             <div class="chat-banner">
-                <span>CONECTADO A MISTRAL AI</span>
+                <span>MISTRAL AI - MONITOR DE RESPUESTA</span>
                 <button class="btn-clear" onclick="clearChat()">🗑️ Limpiar</button>
             </div>
             <div id="chat-body-central">
-                <div class="msg msg-ai">¡Hola! Soy el Agente de INNOA. Escribime y te respondo en tiempo real.</div>
+                <div class="msg msg-ai">¡Hola! Enviá un mensaje para verificar la respuesta del servidor.</div>
             </div>
             <div id="chat-input-area-central">
                 <input type="text" id="chat-input-central" placeholder="Escribí aquí..." onkeypress="if(event.key==='Enter') sendCentralMessage()">
@@ -130,30 +130,34 @@
             body.scrollTop = body.scrollHeight;
 
             const typingId = "t-" + Date.now();
-            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Escribiendo...</div>`;
+            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Consultando servidor...</div>`;
             body.scrollTop = body.scrollHeight;
 
             try {
-                const url = `${webhookURL}?message=${encodeURIComponent(msg)}&_t=${Date.now()}`;
+                // Forzamos bypass de caché con timestamp único y parámetros de red estrictos
+                const url = `${webhookURL}?message=${encodeURIComponent(msg)}&nocache=${Date.now()}`;
                 const response = await fetch(url, { 
                     method: 'GET', 
                     mode: 'cors', 
-                    cache: 'no-store' 
+                    cache: 'no-store',
+                    headers: { 'Accept': 'application/json' }
                 });
 
-                const rawResponse = await response.text(); 
+                const rawText = await response.text(); 
+                console.log("Respuesta recibida:", rawText);
                 
-                // Lógica Inteligente: Intenta parsear JSON, si falla muestra el texto directo
+                let data;
                 try {
-                    const data = JSON.parse(rawResponse);
-                    document.getElementById(typingId).innerText = data.respuesta || rawResponse;
+                    data = JSON.parse(rawText);
+                    // Si es JSON, buscamos el campo 'respuesta'
+                    document.getElementById(typingId).innerText = data.respuesta || rawText;
                 } catch (e) {
-                    // Si llegamos acá es porque Make envió texto plano (lo que causaba el error antes)
-                    document.getElementById(typingId).innerText = rawResponse;
+                    // Si NO es JSON, mostramos el texto plano recibido (ayuda a diagnosticar)
+                    document.getElementById(typingId).innerText = "Respuesta (Texto Plano): " + rawText;
                 }
 
             } catch (err) {
-                document.getElementById(typingId).innerText = "Error de conexión: " + err.message;
+                document.getElementById(typingId).innerText = "Error Crítico: " + err.message;
             }
             body.scrollTop = body.scrollHeight;
         }
@@ -167,6 +171,7 @@
         setInterval(function() {
             const now = new Date().getTime();
             const distance = targetDate - now;
+            if (isNaN(distance)) return;
             document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
             document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
