@@ -13,7 +13,6 @@
             --accent: #10b981;
             --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.1);
-            --danger: #ff0055;
         }
 
         * { box-sizing: border-box; transition: all 0.3s ease; }
@@ -24,97 +23,112 @@
         .particle { position: absolute; width: 6px; height: 6px; background: var(--secondary); border-radius: 50%; pointer-events: none; z-index: 9999; box-shadow: 0 0 15px var(--secondary); }
 
         /* HEADER */
-        header { padding: 80px 0 60px; text-align: center; background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, var(--bg) 80%); }
-        .badge-info { background: linear-gradient(90deg, var(--primary), var(--secondary)); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 20px; }
-        h1 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; margin: 0; line-height: 0.9; }
-        h1 span { background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* RELOJ */
-        .countdown-container { margin: 40px auto; display: flex; justify-content: center; gap: 15px; }
-        .time-block { background: rgba(255, 0, 85, 0.1); border: 1px solid var(--danger); padding: 15px; border-radius: 12px; min-width: 80px; box-shadow: 0 0 15px rgba(255, 0, 85, 0.2); }
-        .time-value { display: block; font-size: 2rem; font-weight: 900; color: var(--danger); line-height: 1; }
-        .time-label { font-size: 0.7rem; text-transform: uppercase; color: #9ca3af; }
+        header { padding: 60px 0 30px; text-align: center; background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, var(--bg) 80%); }
+        .badge-info { background: linear-gradient(90deg, var(--primary), var(--secondary)); padding: 8px 20px; border-radius: 50px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; display: inline-block; margin-bottom: 20px; }
+        h1 { font-size: clamp(2.2rem, 7vw, 4rem); font-weight: 900; margin: 0; line-height: 1.1; letter-spacing: -1px; }
+        h1 span { background: linear-gradient(to right, #00f2fe, #d946ef); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         /* CHAT */
-        .demo-container { max-width: 800px; margin: 60px auto; padding: 20px; text-align: center; }
-        #chat-widget-central { width: 100%; max-width: 600px; margin: 0 auto; background: #0f172a; border: 2px solid var(--primary); border-radius: 24px; display: flex; flex-direction: column; box-shadow: 0 0 50px rgba(59, 130, 246, 0.2); overflow: hidden; }
-        .chat-banner { background: linear-gradient(90deg, var(--secondary), var(--primary)); color: white; padding: 12px 20px; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; }
-        #chat-body-central { height: 350px; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(0,0,0,0.3); }
-        .msg { padding: 12px 18px; border-radius: 15px; max-width: 85%; font-size: 0.95rem; text-align: left; line-height: 1.4; }
-        .msg-user { background: var(--primary); align-self: flex-end; color: white; }
-        .msg-ai { background: var(--glass); border: 1px solid var(--border); align-self: flex-start; border-left: 4px solid var(--secondary); white-space: pre-wrap; }
-        
-        #chat-input-area-central { padding: 15px; display: flex; gap: 10px; background: #030712; }
-        #chat-input-central { flex: 1; background: var(--glass); border: 1px solid var(--border); color: white; padding: 12px; border-radius: 10px; outline: none; }
-        .btn-send { background: var(--primary); border: none; color: white; padding: 0 20px; border-radius: 10px; cursor: pointer; font-weight: bold; }
-        .btn-clear { background: rgba(0,0,0,0.3); border: none; color: white; border-radius: 5px; cursor: pointer; padding: 5px 10px; font-size: 0.7rem; }
+        .demo-container { max-width: 650px; margin: 20px auto; padding: 0 20px; text-align: center; }
+        .chat-label { color: var(--primary); font-weight: 900; font-size: 1.2rem; margin-bottom: 15px; text-transform: uppercase; }
 
-        /* SECCIONES EXTRAS */
-        .authority { padding: 60px 0; background: var(--glass); border-top: 1px solid var(--border); text-align: center; }
-        .stats { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
-        .stat-item h2 { font-size: 3.5rem; color: var(--primary); margin: 0; font-weight: 900; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 80px 0; }
-        .card { background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 24px; text-align: left; }
-        .card h3 { color: var(--secondary); margin-top: 0; }
+        #chat-widget-central { 
+            width: 100%; background: #0f172a; border: 2px solid var(--primary); 
+            border-radius: 24px; display: flex; flex-direction: column; 
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.2); overflow: hidden; 
+        }
         
-        footer { padding: 80px 0; border-top: 1px solid var(--border); text-align: center; background: #000; }
-        .btn-primary { background: #fff; color: #000; padding: 18px 40px; border-radius: 12px; font-weight: 900; text-decoration: none; display: inline-block; margin-top: 20px; }
+        .chat-banner { 
+            background: linear-gradient(90deg, #1e3a8a, #581c87); color: white; 
+            padding: 12px 20px; font-size: 0.75rem; font-weight: 700; 
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        #chat-body-central { height: 380px; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: rgba(0,0,0,0.4); scrollbar-width: thin; }
+        
+        .msg { padding: 12px 18px; border-radius: 18px; max-width: 85%; font-size: 0.95rem; text-align: left; line-height: 1.5; }
+        .msg-user { background: var(--primary); align-self: flex-end; color: white; border-bottom-right-radius: 4px; }
+        .msg-ai { background: #1e293b; border: 1px solid var(--border); align-self: flex-start; border-bottom-left-radius: 4px; border-left: 4px solid var(--secondary); white-space: pre-wrap; }
+
+        #chat-input-area-central { padding: 15px; display: flex; gap: 10px; background: #030712; border-top: 1px solid var(--border); }
+        #chat-input-central { flex: 1; background: var(--glass); border: 1px solid var(--border); color: white; padding: 12px; border-radius: 12px; outline: none; }
+        
+        .btn-send { background: var(--primary); border: none; color: white; padding: 0 20px; border-radius: 12px; cursor: pointer; font-weight: 900; }
+        .btn-send:hover { background: var(--secondary); }
+
+        /* CONTACT & COMMUNITY */
+        .marketing-box { margin-top: 25px; padding: 20px; background: var(--glass); border-radius: 20px; border: 1px solid var(--border); }
+        .btn-community { 
+            background: #25d366; color: white; text-decoration: none; 
+            padding: 14px 24px; border-radius: 50px; font-weight: 900; 
+            display: inline-flex; align-items: center; gap: 10px; margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); font-size: 0.9rem;
+        }
+        .contact-grid { font-size: 0.85rem; color: #9ca3af; line-height: 1.6; }
+        .contact-grid b { color: white; }
+
+        /* STATS */
+        .stats-bar { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; padding: 30px 0; margin-top: 20px; border-top: 1px solid var(--border); }
+        .stat-item h2 { font-size: 2.2rem; color: var(--primary); margin: 0; font-weight: 900; }
+        .stat-item p { font-size: 0.65rem; text-transform: uppercase; color: #9ca3af; margin: 0; }
+
+        footer { padding: 30px 0; text-align: center; opacity: 0.5; font-size: 0.75rem; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container">
-            <div class="badge-info">Viernes 15 de Mayo | 20:00 HS</div>
-            <h1>Creá tu propio <span>Asistente Pedagógico.</span></h1>
-            <div class="countdown-container">
-                <div class="time-block"><span class="time-value" id="days">00</span><span class="time-label">Días</span></div>
-                <div class="time-block"><span class="time-value" id="hours">00</span><span class="time-label">Horas</span></div>
-                <div class="time-block"><span class="time-value" id="minutes">00</span><span class="time-label">Min</span></div>
-                <div class="time-block" style="border-color: var(--secondary); background: rgba(217, 70, 239, 0.1);">
-                    <span class="time-value" id="seconds" style="color: var(--secondary);">00</span><span class="time-label">Seg</span>
-                </div>
-            </div>
-            <p style="font-size: 1.2rem; color: #9ca3af;">Revolucioná tu aula con Agentes de Inteligencia Artificial.</p>
-            <a href="https://forms.gle/TvAPQjDMaDeAwmRj7" class="btn-primary">INSCRIBIRME AHORA</a>
+            <div class="badge-info">MASTERCLASS - NIVEL INICIAL</div>
+            <h1>CREÁ TU PROPIA <span>IA DOCENTE</span></h1>
+            <p style="margin-top: 10px; color: #9ca3af; font-weight: 400;">
+                Viernes 15 Mayo | 20:00 HS (ARG) | <b>Inversión: $20.000</b>
+            </p>
         </div>
     </header>
 
     <div class="demo-container">
+        <div class="chat-label">¿Dudas? Preguntale a nuestra IA</div>
         <div id="chat-widget-central">
             <div class="chat-banner">
-                <span>MISTRAL AI - MONITOR DE RESPUESTA</span>
-                <button class="btn-clear" onclick="clearChat()">🗑️ Limpiar</button>
+                <span>🤖 ASISTENTE PEDAGÓGICO INNOA</span>
+                <span style="color: #25d366;">● Online</span>
             </div>
             <div id="chat-body-central">
-                <div class="msg msg-ai">¡Hola! Enviá un mensaje para verificar la respuesta del servidor.</div>
+                <div class="msg msg-ai">¡Hola! Soy el asistente virtual de <b>INNOA</b>. 👋 
+
+Estoy aquí para contarte cómo podés automatizar tus planificaciones y ahorrar más de 10 horas de trabajo semanal. 
+
+¿Tenés alguna duda sobre el taller de este viernes o querés saber qué es un Agente de IA?</div>
             </div>
             <div id="chat-input-area-central">
-                <input type="text" id="chat-input-central" placeholder="Escribí aquí..." onkeypress="if(event.key==='Enter') sendCentralMessage()">
+                <input type="text" id="chat-input-central" placeholder="¿Qué voy a aprender en el taller?" onkeypress="if(event.key==='Enter') sendCentralMessage()">
                 <button class="btn-send" onclick="sendCentralMessage()">ENVIAR</button>
             </div>
         </div>
-    </div>
 
-    <div class="authority">
-        <div class="container">
-            <div class="stats">
-                <div class="stat-item"><h2>+900</h2><p>Docentes</p></div>
-                <div class="stat-item"><h2>5</h2><p>Posgrados</p></div>
-                <div class="stat-item"><h2>12</h2><p>Diplomaturas</p></div>
+        <div class="marketing-box">
+            <div class="contact-grid">
+                📍 San Salvador de Jujuy | 🌐 <b>www.innoajujuy.com</b><br>
+                📞 Consultas: <b>3886865482</b>
             </div>
+            <a href="https://chat.whatsapp.com/FA9j9NdjXSdAbrzwbEsiia" target="_blank" class="btn-community">
+                🚀 UNIRSE A LA COMUNIDAD
+            </a>
         </div>
     </div>
 
     <div class="container">
-        <div class="grid">
-            <div class="card"><h3>⚡ Ahorro de Tiempo</h3><p>Planificá secuencias didácticas en minutos.</p></div>
-            <div class="card"><h3>🇦🇷 Contexto Local</h3><p>Adaptado a los NAP y marcos pedagógicos de Argentina.</p></div>
-            <div class="card"><h3>🛡️ Calidad INNOA</h3><p>Respaldo universitario y académico en cada paso.</p></div>
+        <div class="stats-bar">
+            <div class="stat-item"><h2>+900</h2><p>Docentes</p></div>
+            <div class="stat-item"><h2>5</h2><p>Posgrados</p></div>
+            <div class="stat-item"><h2>12</h2><p>Diplomaturas</p></div>
         </div>
     </div>
 
-    <footer><h2>INNOA | PRAXIS</h2></footer>
+    <footer>
+        INNOA | PRAXIS © 2026 - Innovación en Educación y Tecnología
+    </footer>
 
     <script>
         const webhookURL = "https://hook.us2.make.com/5rykmhi5bgpe07xdhdvb8yrtxswufy9c";
@@ -130,53 +144,31 @@
             body.scrollTop = body.scrollHeight;
 
             const typingId = "t-" + Date.now();
-            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Consultando servidor...</div>`;
+            body.innerHTML += `<div class="msg msg-ai" id="${typingId}">Analizando consulta pedagógica...</div>`;
             body.scrollTop = body.scrollHeight;
 
             try {
-                // Forzamos bypass de caché con timestamp único y parámetros de red estrictos
-                const url = `${webhookURL}?message=${encodeURIComponent(msg)}&nocache=${Date.now()}`;
-                const response = await fetch(url, { 
-                    method: 'GET', 
-                    mode: 'cors', 
-                    cache: 'no-store',
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                const rawText = await response.text(); 
-                console.log("Respuesta recibida:", rawText);
+                // Bypass estricto de caché y método GET para estabilidad
+                const url = `${webhookURL}?message=${encodeURIComponent(msg)}&_t=${Date.now()}`;
+                const response = await fetch(url, { method: 'GET', mode: 'cors', cache: 'no-store' });
+                const rawText = await response.text();
                 
-                let data;
+                const bubble = document.getElementById(typingId);
+                
                 try {
-                    data = JSON.parse(rawText);
-                    // Si es JSON, buscamos el campo 'respuesta'
-                    document.getElementById(typingId).innerText = data.respuesta || rawText;
+                    const data = JSON.parse(rawText);
+                    // Detectamos si la respuesta viene en el campo 'responder' o 'respuesta'
+                    bubble.innerText = data.responder || data.respuesta || rawText;
                 } catch (e) {
-                    // Si NO es JSON, mostramos el texto plano recibido (ayuda a diagnosticar)
-                    document.getElementById(typingId).innerText = "Respuesta (Texto Plano): " + rawText;
+                    // Si es texto plano, lo mostramos limpio (sin prefijos de error)
+                    bubble.innerText = rawText;
                 }
 
             } catch (err) {
-                document.getElementById(typingId).innerText = "Error Crítico: " + err.message;
+                document.getElementById(typingId).innerText = "Hubo un pequeño error de conexión. Por favor, intentá de nuevo.";
             }
             body.scrollTop = body.scrollHeight;
         }
-
-        function clearChat() {
-            document.getElementById('chat-body-central').innerHTML = `<div class="msg msg-ai">Chat reiniciado.</div>`;
-        }
-
-        // Reloj
-        const targetDate = new Date("May 15, 2026 20:00:00").getTime();
-        setInterval(function() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-            if (isNaN(distance)) return;
-            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
-        }, 1000);
 
         // Estela Mouse
         document.addEventListener('mousemove', function(e) {
